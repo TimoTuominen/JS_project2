@@ -1,0 +1,22 @@
+.container{
+    background-color: bisque;
+}
+#paaotsikko{
+    display: inline-block;
+}
+.form-inline{
+    padding: 10px;
+}
+.navbar{
+    margin: 0px;
+    padding: 0px;
+}
+.rivi1{
+    margin-top: 25px;
+}
+.rivi2{
+    margin-top: 25px;
+}
+textarea.form-control {
+    width: auto;
+}
