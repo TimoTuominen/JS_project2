@@ -8,12 +8,18 @@ const getLanguage = fetch("https://www.finnkino.fi/xml/TheatreAreas/")
     const serializer = new XMLSerializer();
 
     const xml = parser.parseFromString(data, "application/xml");
+    let pituus = xml.getElementsByTagName("TheatreArea").length;
+    console.log(pituus);
+    for (let i = 0; i < pituus; i++) {
+      let tulos = xml.getElementsByTagName("TheatreArea").item(i);
 
-    let tulos = xml.getElementsByTagName("ID").item(0);
+      const xmlStr = serializer.serializeToString(tulos);
+      //console.log(xmlStr);
+      let char = xmlStr.charAt(0);
+      teksti.innerHTML += `<li><span>${char}</span></li>`;
+      teksti.innerHTML += `<li><span>${xmlStr}</span></li>`;
+    }
 
-    const xmlStr = serializer.serializeToString(tulos);
-    console.log(xmlStr);
-    teksti.innerHTML = xmlStr;
     //let tulosString = xml.toXMLString();
     //teksti.innerHTML = tulosString;
     //teksti.innerHTML =
