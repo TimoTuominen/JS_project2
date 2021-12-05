@@ -17,12 +17,15 @@ const getLanguage = fetch("https://www.finnkino.fi/xml/Schedule/")
     const xml = parser.parseFromString(data, "application/xml");
     let pituus = xml.getElementsByTagName("Theatre").length;
     console.log(pituus);
+
     for (let i = 0; i < pituus; i++) {
       let tulos = xml.getElementsByTagName("Theatre").item(i);
       const xmlStr = serializer.serializeToString(tulos);
-      console.log(xmlStr);
-      console.log(tulos);
+
       if (xmlStr == "<Theatre>" + valittuTeatteri + "</Theatre>") {
+        let elokuvanNimi = xml.getElementsByTagName("Title").item(i);
+        let elokuvanNimiStr = serializer.serializeToString(elokuvanNimi);
+        let elokuvanNimiClean = elokuvanNimiStr.replace(/<\/?[^>]+(>|$)/g, "");
         let kuvalinkki = xml
           .getElementsByTagName("EventSmallImagePortrait")
           .item(i);
@@ -30,19 +33,12 @@ const getLanguage = fetch("https://www.finnkino.fi/xml/Schedule/")
         let kuvalinkkiClean = kuvalinkkiStr.replace(/<\/?[^>]+(>|$)/g, "");
         teksti.insertAdjacentHTML(
           "beforeend",
-          `<li><span><img src="${kuvalinkkiClean}" alt="${kuvalinkkiStr}"> ${xmlStr} </span></li>`
+          `<li><span><img src="${kuvalinkkiClean}" alt="${kuvalinkkiStr}"> ${elokuvanNimiClean} </span></li>`
         );
         //teksti.innerHTML += `<li><span><img src="${cleanText}" alt="${xmlStr2}">${xmlStr}</span></li>`;
       }
-
-      //const xmlStr = serializer.serializeToString(tulos);
-      //console.log(xmlStr);
-      //let char = xmlStr.charAt(0);
-      //teksti.innerHTML += `<li><span>${char}</span></li>`;
-      //teksti.innerHTML += `<li><span>${xmlStr}</span></li>`;
     }
 
     //  tulos[0].getElementsByTagName("ID")[0].childNodes[0].nodeValue;
-    //teksti.innerHTML = tulosString;
   })
   .catch(console.error);
