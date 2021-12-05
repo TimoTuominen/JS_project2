@@ -21,7 +21,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-2">
-          <img src="finnkino.png" class="img-fluid" alt="Responsive image" />
+          <img src="finnkino.png" class="img-fluid" alt="Finnkino logo" />
         </div>
         <div class="col">
           <h1 id="paaotsikko">Finnkino - Elokuvat</h1>
@@ -37,20 +37,14 @@
 
       <div class="row rivi1">
         <div class="col d-flex justify-content-left">
-          <div class="dropdown">
-            <button
-              class="btn btn-primary dropdown-toggle"
-              type="button"
-              data-toggle="dropdown"
-            >
-              Dropdown Example <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu">
-              <li><a href="#">HTML</a></li>
-              <li><a href="#">CSS</a></li>
-              <li><a href="#">JavaScript</a></li>
-            </ul>
-          </div>
+          <label for="cars">Valitse teatteri: </label>
+
+          <select name="teatterit" id="teatteritValinta">
+            <option value="Omena, Espoo">Omena, Espoo</option>
+            <option value="Sello, Espoo">Sello, Espoo</option>
+            <option value="Itis, Helsinki">Itis, Helsinki</option>
+            <option value="Kinopalatsi, Helsinki">Audi</option>
+          </select>
         </div>
       </div>
 
