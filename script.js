@@ -23,12 +23,16 @@ const getLanguage = fetch("https://www.finnkino.fi/xml/Schedule/")
       console.log(xmlStr);
       console.log(tulos);
       if (xmlStr == "<Theatre>" + valittuTeatteri + "</Theatre>") {
-        let tulos2 = xml
+        let kuvalinkki = xml
           .getElementsByTagName("EventSmallImagePortrait")
           .item(i);
-        const xmlStr2 = serializer.serializeToString(tulos2);
-        let cleanText = xmlStr2.replace(/<\/?[^>]+(>|$)/g, "");
-        teksti.innerHTML += `<li><span><img src="${cleanText}" alt="${xmlStr2}">${xmlStr}</span></li>`;
+        const kuvalinkkiStr = serializer.serializeToString(kuvalinkki);
+        let kuvalinkkiClean = kuvalinkkiStr.replace(/<\/?[^>]+(>|$)/g, "");
+        teksti.insertAdjacentHTML(
+          "beforeend",
+          `<li><span><img src="${kuvalinkkiClean}" alt="${kuvalinkkiStr}"> ${xmlStr} </span></li>`
+        );
+        //teksti.innerHTML += `<li><span><img src="${cleanText}" alt="${xmlStr2}">${xmlStr}</span></li>`;
       }
 
       //const xmlStr = serializer.serializeToString(tulos);
