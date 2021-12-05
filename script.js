@@ -1,5 +1,5 @@
 let nappi1 = document.getElementById("nappi1");
-let teksti = document.getElementById("teksti");
+let taulukko = document.getElementById("taulukko");
 
 let teatteriValinta = document.getElementById("teatteritValinta");
 let valittuTeatteri =
@@ -31,9 +31,9 @@ const getLanguage = fetch("https://www.finnkino.fi/xml/Schedule/")
           .item(i);
         const kuvalinkkiStr = serializer.serializeToString(kuvalinkki);
         let kuvalinkkiClean = kuvalinkkiStr.replace(/<\/?[^>]+(>|$)/g, "");
-        teksti.insertAdjacentHTML(
+        taulukko.insertAdjacentHTML(
           "beforeend",
-          `<li><span><img src="${kuvalinkkiClean}" alt="${kuvalinkkiStr}"> ${elokuvanNimiClean} </span></li>`
+          `<tr><td><img src="${kuvalinkkiClean}" alt="${kuvalinkkiStr}"> </td> <td> ${elokuvanNimiClean} </td></tr>`
         );
         //teksti.innerHTML += `<li><span><img src="${cleanText}" alt="${xmlStr2}">${xmlStr}</span></li>`;
       }
