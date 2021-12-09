@@ -26,26 +26,25 @@
         <div class="col">
           <h1 id="paaotsikko">Finnkino - Elokuvat</h1>
           <p></p>
+
           <form class="form-inline float-right" action="#">
-            <input class="form-control" type="text" placeholder="Search" />
-            <button class="btn btn-success" type="submit" id="nappi1">
-              Search
+            <label for="teatterit"><span>Valitse teatteri: </span> </label>
+
+            <select name="teatterit" id="teatteritValinta">
+              <option value="Omena, Espoo">Omena, Espoo</option>
+              <option value="Sello, Espoo">Sello, Espoo</option>
+              <option value="Itis, Helsinki">Itis, Helsinki</option>
+              <option value="Kinopalatsi, Helsinki">Audi</option>
+            </select>
+            <button class="btn btn-success" type="submit" id="haeLeffat">
+              Hae
             </button>
           </form>
         </div>
       </div>
 
       <div class="row rivi1">
-        <div class="col d-flex justify-content-left">
-          <label for="cars">Valitse teatteri: </label>
-
-          <select name="teatterit" id="teatteritValinta">
-            <option value="Omena, Espoo">Omena, Espoo</option>
-            <option value="Sello, Espoo">Sello, Espoo</option>
-            <option value="Itis, Helsinki">Itis, Helsinki</option>
-            <option value="Kinopalatsi, Helsinki">Audi</option>
-          </select>
-        </div>
+        <div class="col d-flex justify-content-left"></div>
       </div>
 
       <div class="row">
