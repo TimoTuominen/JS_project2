@@ -23,17 +23,33 @@ const getLanguage = fetch("https://www.finnkino.fi/xml/Schedule/")
       const xmlStr = serializer.serializeToString(tulos);
 
       if (xmlStr == "<Theatre>" + valittuTeatteri + "</Theatre>") {
-        let elokuvanNimi = xml.getElementsByTagName("Title").item(i);
-        let elokuvanNimiStr = serializer.serializeToString(elokuvanNimi);
-        let elokuvanNimiClean = elokuvanNimiStr.replace(/<\/?[^>]+(>|$)/g, "");
-        let kuvalinkki = xml
+        const elokuvanNimi = xml.getElementsByTagName("Title").item(i);
+        const elokuvanNimiStr = serializer.serializeToString(elokuvanNimi);
+        const elokuvanNimiClean = elokuvanNimiStr.replace(
+          /<\/?[^>]+(>|$)/g,
+          ""
+        );
+
+        const kuvalinkki = xml
           .getElementsByTagName("EventSmallImagePortrait")
           .item(i);
         const kuvalinkkiStr = serializer.serializeToString(kuvalinkki);
-        let kuvalinkkiClean = kuvalinkkiStr.replace(/<\/?[^>]+(>|$)/g, "");
+        const kuvalinkkiClean = kuvalinkkiStr.replace(/<\/?[^>]+(>|$)/g, "");
+
+        const esitysaika = xml.getElementsByTagName("dttmShowStart").item(i);
+        const esitysaikaStr = serializer.serializeToString(esitysaika);
+        const esitysaikaClean = esitysaikaStr.replace(/<\/?[^>]+(>|$)/g, "");
+        const esitysaikaErikseen = esitysaikaClean.split("T");
+        const esitysaikaKellonaika = esitysaikaErikseen[1].slice(0, 5);
+
+        const sali = xml.getElementsByTagName("TheatreAuditorium").item(i);
+        const saliStr = serializer.serializeToString(sali);
+        const saliClean = saliStr.replace(/<\/?[^>]+(>|$)/g, "");
+
         taulukko.insertAdjacentHTML(
           "beforeend",
-          `<tr><td><img src="${kuvalinkkiClean}" alt="${kuvalinkkiStr}"> </td> <td> ${elokuvanNimiClean} </td></tr>`
+          `<tr><td  width="200"><img src="${kuvalinkkiClean}" alt="${kuvalinkkiStr}"> </td> <td> ${elokuvanNimiClean} <br>Esitysaika: <br> ${esitysaikaErikseen[0]} 
+          Klo:  ${esitysaikaKellonaika} <br> Esityspaikka: ${saliClean} </td></tr>`
         );
         //teksti.innerHTML += `<li><span><img src="${cleanText}" alt="${xmlStr2}">${xmlStr}</span></li>`;
       }
