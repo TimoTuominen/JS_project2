@@ -67,7 +67,7 @@ let elokuvahaku = function () {
             // Lisätään painonappiin toiminnaliisuutta painettaesssa
             let omdbHaku = function () {
               fetch(
-                `http://www.omdbapi.com/?apikey=bf626253&t=${elokuvanNimiClean}`
+                `https://www.omdbapi.com/?apikey=bf626253&t=${elokuvanNimiClean}`
               ) //tehdään funktio joka hakee OMDP apia käyttäen tiedot
                 .then((response) => response.json()) // käsitellään ensimmäinen lupaus JSON:iksi
                 .then((data) => lisaaOMDB(data)); // Käsitellään toinen lupaus, kutsutaan lisäysfunktiota
@@ -86,7 +86,7 @@ haeOMDBLeffat.addEventListener("click", function () {
   ylataulukko.innerHTML = ""; // Tyhjennetään tulostus alue
   let hakuteksti = hakukentta.value; // Haetaan hakukentän teksti
   let omdbHaku2 = function () {
-    fetch(`http://www.omdbapi.com/?apikey=bf626253&t=${hakuteksti}`) //tehdään haku funktio OMDB tietoa varten
+    fetch(`https://www.omdbapi.com/?apikey=bf626253&t=${hakuteksti}`) //tehdään haku funktio OMDB tietoa varten
       .then((response) => response.json())
       .then((data) => lisaaOMDB(data)); // käsitellään kummatkin lupaukset
   };
