@@ -77,7 +77,7 @@ function haeOMDB(data) {
   ylataulukko.innerHTML = "";
   ylataulukko.insertAdjacentHTML(
     "beforeend",
-    `<tr><td>${data.Title}, Julkaistu: ${data.Released}</td><td> Näyttelijät: ${data.Actors}</td></tr>
+    `<tr><td>${data.Title}, Julkaistu: ${data.Released}</td><td text-align: left> Näyttelijät: ${data.Actors}</td></tr>
     <tr><td>Juoni: ${data.Plot} </td></tr> `
   );
 }

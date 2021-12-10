@@ -1,22 +1,40 @@
-.container{
-    background-color: bisque;
+.container {
+  background-color: bisque;
 }
-#paaotsikko{
-    display: inline-block;
+#paaotsikko {
+  display: inline-block;
 }
-.form-inline{
-    padding: 10px;
+.form-inline {
+  padding: 10px;
 }
-.navbar{
-    margin: 0px;
-    padding: 0px;
+
+.rivi1 {
+  margin-top: 25px;
 }
-.rivi1{
-    margin-top: 25px;
-}
-.rivi2{
-    margin-top: 25px;
+.rivi2 {
+  margin-top: 25px;
 }
 textarea.form-control {
-    width: auto;
+  width: auto;
+}
+#hakukentta {
+  width: 400px;
+  display: inline;
+}
+
+#haeLeffat {
+  display: inline;
+}
+#vapaahaku {
+  margin-top: 10px;
+}
+#teatteritValinta {
+  height: 38px;
+  background-color: white;
+  border-radius: 5px;
+  margin-right: 5px;
+}
+#hakukentta {
+  margin-top: 10px;
+  margin-right: 5px;
 }
