@@ -8,10 +8,14 @@ let valintaTeksti = teatteriValinta.options[teatteriValinta.selectedIndex].text;
 
 let elokuvahaku = function () {
   // Tehdään funktio tietojen noutoa varten
-  fetch("https://www.finnkino.fi/xml/Schedule/") // Tehdään haku Fetchiä käyttäen
+  let valintaValue =
+    teatteriValinta.options[teatteriValinta.selectedIndex].value;
+  alert(valintaValue);
+  fetch(`https://www.finnkino.fi/xml/Schedule/?area=${valintaValue}`) // Tehdään haku Fetchiä käyttäen
     .then((response) => response.text()) // Käsitellään ensimmäinen lupaus then käskyllä
     .then((data) => {
       // käsitellään seuraava lupaus ja saatu data
+      console.log(data);
       const parser = new DOMParser(); // Luodaan parseri XML tiedon käsittelyyn
       const serializer = new XMLSerializer(); // Luodaan Serializer XML:n muuttamiseksi tekstimuotoon
 
@@ -23,7 +27,7 @@ let elokuvahaku = function () {
         let tulos = xml.getElementsByTagName("Theatre").item(i); // Otetaan elementit järjestyksessä käsittelyyn
         const xmlStr = serializer.serializeToString(tulos); // Muutetaan objekti string muotoon
         let valittuTeatteri =
-          teatteriValinta.options[teatteriValinta.selectedIndex].value; // Haeataan select boxin arvo
+          teatteriValinta.options[teatteriValinta.selectedIndex].text; // Haeataan select boxin arvo
 
         if (xmlStr == "<Theatre>" + valittuTeatteri + "</Theatre>") {
           // tarkistetaan onko kyseessä halutun teatterin näytös
