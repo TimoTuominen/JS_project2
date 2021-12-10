@@ -4,18 +4,16 @@ let teatteriValinta = document.getElementById("teatteritValinta");
 let ylataulukko = document.getElementById("ylataulukko");
 let hakukentta = document.getElementById("hakukentta");
 let haeOMDBLeffat = document.getElementById("haeOMDBLeffat");
-let valintaTeksti = teatteriValinta.options[teatteriValinta.selectedIndex].text; // haetaan kentässä oleva arvo
+// let valintaTeksti = teatteriValinta.options[teatteriValinta.selectedIndex].text; // haetaan kentässä oleva arvo
 
 let elokuvahaku = function () {
   // Tehdään funktio tietojen noutoa varten
   let valintaValue =
     teatteriValinta.options[teatteriValinta.selectedIndex].value;
-  alert(valintaValue);
   fetch(`https://www.finnkino.fi/xml/Schedule/?area=${valintaValue}`) // Tehdään haku Fetchiä käyttäen
     .then((response) => response.text()) // Käsitellään ensimmäinen lupaus then käskyllä
     .then((data) => {
       // käsitellään seuraava lupaus ja saatu data
-      console.log(data);
       const parser = new DOMParser(); // Luodaan parseri XML tiedon käsittelyyn
       const serializer = new XMLSerializer(); // Luodaan Serializer XML:n muuttamiseksi tekstimuotoon
 
