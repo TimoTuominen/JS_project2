@@ -4,7 +4,6 @@ let teatteriValinta = document.getElementById("teatteritValinta");
 let ylataulukko = document.getElementById("ylataulukko");
 let hakukentta = document.getElementById("hakukentta");
 let haeOMDBLeffat = document.getElementById("haeOMDBLeffat");
-// let valintaTeksti = teatteriValinta.options[teatteriValinta.selectedIndex].text; // haetaan kentässä oleva arvo
 
 let elokuvahaku = function () {
   // Tehdään funktio tietojen noutoa varten
