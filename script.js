@@ -2,6 +2,7 @@
 let taulukko = document.getElementById("taulukko");
 let haeLeffat = document.getElementById("haeLeffat");
 let teatteriValinta = document.getElementById("teatteritValinta");
+let ylataulukko = document.getElementById("ylataulukko");
 //let valittuTeatteri = teatteriValinta.options[teatteriValinta.selectedIndex].value;
 let valintaTeksti = teatteriValinta.options[teatteriValinta.selectedIndex].text;
 
@@ -50,17 +51,20 @@ let elokuvahaku = function () {
             "beforeend",
             `<tr><td  width="200"><img src="${kuvalinkkiClean}" alt="${kuvalinkkiStr}"> </td> <td><h4 id=elokuva${i}> ${elokuvanNimiClean} </h4><br>Esitysaika: ${esitysaikaErikseen[0]} 
           Klo:  ${esitysaikaKellonaika} <br> Esityspaikka: ${saliClean} </td></tr> <td><button class="btn btn-success" type="submit" id="nappi${i}">
-          Search
+          Lisätietoja
         </button></td> `
           );
 
           let haeTietokannasta = document.getElementById("nappi" + i);
           haeTietokannasta.addEventListener("click", function () {
             let omdbHaku = function () {
-              fetch("http://www.omdbapi.com/?apikey=bf626253&t=West+Side+Story")
+              fetch(
+                `http://www.omdbapi.com/?apikey=bf626253&t=${elokuvanNimiClean}`
+              )
                 .then((response) => response.json())
                 .then((data) => haeOMDB(data));
             };
+
             omdbHaku();
           });
         }
@@ -70,9 +74,14 @@ let elokuvahaku = function () {
 };
 
 function haeOMDB(data) {
-  alert(data.Title);
+  ylataulukko.innerHTML = "";
+  ylataulukko.insertAdjacentHTML(
+    "beforeend",
+    `<tr><td>${data.Title}, Julkaistu: ${data.Released}</td><td> Näyttelijät: ${data.Actors}</td></tr>
+    <tr><td>Juoni: ${data.Plot} </td></tr> `
+  );
 }
-// elokuvahaku();
+
 haeLeffat.addEventListener("click", function () {
   taulukko.innerHTML = "";
   elokuvahaku();
